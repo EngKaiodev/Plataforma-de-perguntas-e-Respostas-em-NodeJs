@@ -1,0 +1,116 @@
+<%- include('partials/header') %>
+
+    <body>
+        <%- include('partials/navbar') %>
+
+            <div class="container py-4">
+
+    <!-- Pergunta -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-4">
+
+            <span class="badge bg-primary mb-3">Pergunta</span>
+
+            <h1 class="fw-bold text-dark mb-3">
+                <%= pergunta.titulo %>
+            </h1>
+
+            <p class="text-secondary fs-5 mb-0">
+                <%= pergunta.descricao %>
+            </p>
+
+        </div>
+    </div>
+
+    <!-- Formulário de resposta -->
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-header bg-white border-0 pt-4 px-4">
+            <h3 class="fw-bold mb-0">
+                Deixe sua resposta
+            </h3>
+            <p class="text-muted mb-0 mt-1">
+                Compartilhe seu conhecimento com a comunidade.
+            </p>
+        </div>
+
+        <div class="card-body p-4">
+
+            <form method="POST" action="/responder">
+
+                <div class="mb-3">
+                    <label for="corpo" class="form-label fw-semibold">
+                        Sua resposta
+                    </label>
+
+                    <textarea
+                        placeholder="Escreva sua resposta aqui..."
+                        class="form-control"
+                        rows="4"
+                        name="corpo"
+                        id="corpo"></textarea>
+                </div>
+
+                <input
+                    type="hidden"
+                    name="pergunta"
+                    value="<%= pergunta.id %>">
+
+                <button type="submit" class="btn btn-primary px-4">
+                    Enviar resposta
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Lista de respostas -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h3 class="fw-bold mb-0">
+            Respostas
+        </h3>
+
+        <span class="badge bg-primary rounded-pill">
+            <%= respostas.length %>
+        </span>
+
+    </div>
+
+    <% if (respostas.length > 0) { %>
+
+        <% respostas.forEach(resposta => { %>
+
+            <div class="card shadow-sm border-0 mb-3">
+
+                <div class="card-body p-4">
+
+                    <p class="text-dark mb-0">
+                        <%= resposta.corpo %>
+                    </p>
+
+                </div>
+
+            </div>
+
+        <% }) %>
+
+    <% } else { %>
+
+        <div class="alert alert-light border text-center py-4">
+            <h5 class="fw-semibold text-secondary">
+                Ainda não existem respostas.
+            </h5>
+
+            <p class="text-muted mb-0">
+                Seja o primeiro a responder esta pergunta!
+            </p>
+        </div>
+
+    <% } %>
+
+</div>
+
+    </body>
+    <%- include('partials/footer') %>

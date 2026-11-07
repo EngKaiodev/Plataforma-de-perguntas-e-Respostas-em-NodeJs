@@ -1,0 +1,21 @@
+{
+  "name": "guiaperguntas",
+  "version": "1.0.0",
+  "description": "uma plataforma de perguntas e respostas estilo Yahoo respostas",
+  "license": "ISC",
+  "author": "Kaio Santos",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.3.0",
+    "bootstrap": "^5.3.8",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.24.6",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
+  }
+}
